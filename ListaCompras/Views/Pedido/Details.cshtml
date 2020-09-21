@@ -1,0 +1,30 @@
+﻿@model ListaCompras.Repositório.Pedido
+
+@{
+    ViewBag.Title = "PedidoDetails";
+}
+
+<h2>Detalhes do Pedido</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ds_Pedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ds_Pedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPedido)
+        </dd>
+
+    </dl>
+</div>

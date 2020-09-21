@@ -1,0 +1,30 @@
+﻿@model ListaCompras.ViewModel.UsuarioViewModel
+
+@{
+    ViewBag.Title = "Sistema de Cadastro de Pedidos";
+}
+
+<h2>Informe seus dados de acesso:</h2>
+
+@using (Html.BeginForm("FazerLogin"))
+{
+    <table>
+        <tr>
+            <td>E-mail: @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>
+                Senha: @Html.PasswordFor(m => m.Senha, new { @class = "form-control", placeholder = "Password" })
+                       @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="btnAcessar" type="submit" value="Acessar" class="btn btn-default" />
+                @Html.ActionLink("Criar Pessoa Física", "CriaPessoaFisica", "PessoaFisica") | 
+                @Html.ActionLink("Criar Pessoa Jurídica", "CriaPessoaJuridica", "PessoaJuridica")
+            </td>
+        </tr>
+    </table>
+}
+

@@ -1,0 +1,32 @@
+﻿@model ListaCompras.ViewModel.PedidoViewModel
+
+@{
+    ViewBag.Title = "Sistema de Cadastro de Pedidos";
+}
+
+<h2>Cadastro de Pedidos:</h2>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdUsuario, "Id_Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Id_Usuario", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Descrição do Pedido: @Html.TextBoxFor(m => m.DescricaoPedido, new { @class = "form-control form-control-custom", @style = "width:1000px; height:150px;" })</td>
+        </tr>
+        <tr>
+            <td>
+                <input id="btnSalvar" type="submit" value="Salvar" class="btn btn-default"/>
+            </td>
+        </tr>
+    </table>
+}

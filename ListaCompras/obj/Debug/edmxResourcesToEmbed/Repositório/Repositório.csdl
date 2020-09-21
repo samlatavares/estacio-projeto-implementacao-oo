@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TRABPROJIMPLOOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TRABPROJIMPLOOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Usuario" EntityType="TRABPROJIMPLOOModel.Usuario" />
+    <EntitySet Name="Pedido" EntityType="TRABPROJIMPLOOModel.Pedido" />
+    <AssociationSet Name="FK_Id_Usuario" Association="TRABPROJIMPLOOModel.FK_Id_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Senha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Endereco" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RazaoSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DataNascimento" Type="DateTime" Precision="3" />
+    <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Pedido" Relationship="TRABPROJIMPLOOModel.FK_Id_Usuario" FromRole="Usuario" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="Pedido">
+    <Key>
+      <PropertyRef Name="Id_Pedido" />
+    </Key>
+    <Property Name="Id_Pedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+    <Property Name="Ds_Pedido" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="DataPedido" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="TRABPROJIMPLOOModel.FK_Id_Usuario" FromRole="Pedido" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK_Id_Usuario">
+    <End Type="TRABPROJIMPLOOModel.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="TRABPROJIMPLOOModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="Id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
