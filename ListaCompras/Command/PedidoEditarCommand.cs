@@ -25,7 +25,6 @@ namespace ListaCompras.Command
             else
                 throw new Exception("Apenas o solicitante pode editar informações do pedido.");
          
-        
         }
 
         public override bool Validar(PedidoViewModel model)

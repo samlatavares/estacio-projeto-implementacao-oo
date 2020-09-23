@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using ListaCompras.Repositório;
 using ListaCompras.ViewModel;
 
@@ -17,10 +18,6 @@ namespace ListaCompras.Command
 
         public override void Executar(UsuarioViewModel usuario)
         {
-            if (!Validar(usuario))
-            {
-                throw new Exception("O usuário informado não está cadastrado no sistema.");
-            }
 
         }
 

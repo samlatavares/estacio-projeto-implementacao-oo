@@ -25,10 +25,6 @@ namespace ListaCompras.Command
                     db.Pedido.Add(pedido);
                     db.SaveChanges();
                 }
-                else
-                {
-                    throw new Exception("Por favor, preencha a descrição do seu pedido.");
-                }
             }
             else
                 throw new Exception("Por favor, acesse o sistema novamente.");

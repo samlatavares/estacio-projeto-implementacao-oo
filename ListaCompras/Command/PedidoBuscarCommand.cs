@@ -46,7 +46,6 @@ namespace ListaCompras.Command
             else
             {
                 return new List<Pedido>();
-                //throw new Exception("Por favor, acesse o sistema novamente.");
             }
 
         }

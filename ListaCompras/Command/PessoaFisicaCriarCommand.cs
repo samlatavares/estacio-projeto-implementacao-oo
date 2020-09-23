@@ -13,24 +13,19 @@ namespace ListaCompras.Command
 
         public override void Executar(PessoaFisicaViewModel model)
         {
-            if (Validar(model))
-            {
-                Usuario usuario = new Usuario();
-                usuario.DataNascimento = model.DataNascimento;
-                usuario.Documento = model.CPF;
-                usuario.Email = model.Email;
-                usuario.Nome = model.Nome;
-                usuario.Senha = model.Senha;
-                usuario.Endereco = model.Endereco;
-                usuario.Tipo = "F";
 
-                db.Usuario.Add(usuario);
-                db.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("Por favor, preencha todos os campos.");
-            }
+            Usuario usuario = new Usuario();
+            usuario.DataNascimento = model.DataNascimento;
+            usuario.Documento = model.CPF;
+            usuario.Email = model.Email;
+            usuario.Nome = model.Nome;
+            usuario.Senha = model.Senha;
+            usuario.Endereco = model.Endereco;
+            usuario.Tipo = "F";
+
+            db.Usuario.Add(usuario);
+            db.SaveChanges();
+
         }
 
         public override bool Validar(PessoaFisicaViewModel model)

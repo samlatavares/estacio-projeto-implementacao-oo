@@ -20,9 +20,18 @@ namespace ListaCompras.Controllers
         public ActionResult CriaPessoaJuridica(PessoaJuridicaViewModel pessoa)
         {
             PessoaJuridicaCriarCommand command = new PessoaJuridicaCriarCommand();
-            command.Executar(pessoa);
 
-            return RedirectToAction("FazerLogin", "Usuario"); //Redireciona para a tela de Login.
+            if (command.Validar(pessoa))
+            {
+
+                command.Executar(pessoa);
+
+                return RedirectToAction("FazerLogin", "Usuario"); //Redireciona para a tela de Login.
+            }
+            else
+            {
+                return CriaPessoaJuridica();
+            }
         }
     }
 }
