@@ -15,19 +15,14 @@ namespace ListaCompras.Command
         {
             if (HttpContext.Current.Session["Usuario"] != null)
             {
-                if (Validar(model))
-                {
-                    Pedido pedido = new Pedido();
-                    pedido.Ds_Pedido = model.DescricaoPedido;
-                    pedido.Id_Usuario = (int)HttpContext.Current.Session["Usuario"];
-                    pedido.DataPedido = DateTime.Now;
+                Pedido pedido = new Pedido();
+                pedido.Ds_Pedido = model.DescricaoPedido;
+                pedido.Id_Usuario = (int)HttpContext.Current.Session["Usuario"];
+                pedido.DataPedido = DateTime.Now;
 
-                    db.Pedido.Add(pedido);
-                    db.SaveChanges();
-                }
+                db.Pedido.Add(pedido);
+                db.SaveChanges();
             }
-            else
-                throw new Exception("Por favor, acesse o sistema novamente.");
         }
 
         public override bool Validar(PedidoViewModel model)

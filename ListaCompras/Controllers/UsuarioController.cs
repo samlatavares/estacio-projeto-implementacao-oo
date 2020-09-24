@@ -24,15 +24,29 @@ namespace ListaCompras.Controllers
         {
             UsuarioCriarCommand userCommand = new UsuarioCriarCommand();
 
-            userCommand.Executar(usuario);
+            if (userCommand.Validar(usuario)) { 
 
-            UsuarioBuscarCommand buscaCommand = new UsuarioBuscarCommand();
+                UsuarioBuscarCommand buscaCommand = new UsuarioBuscarCommand();
 
-            int idUsuario = buscaCommand.BuscarUsuario(usuario.Email);
+                int idUsuario = buscaCommand.BuscarUsuario(usuario.Email);
 
-            Session["Usuario"] = idUsuario;
+                if (idUsuario != -1)
+                {
+                    Session["Usuario"] = idUsuario;
 
-            return RedirectToAction("Index", "Pedido"); //Redireciona para o cadastro de pessoa.
+                    return RedirectToAction("Index", "Pedido"); //Redireciona para o cadastro de pedido.
+                }
+                else
+                {
+                    ViewBag.Message = "Usuário não encontrado!";
+                    return FazerLogin();
+                }
+            }
+            else
+            {
+                ViewBag.Message = "Por favor, verifique os dados informados e tente novamente!";
+                return FazerLogin();
+            }
         }
     }
 }

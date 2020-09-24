@@ -1,9 +1,9 @@
 ﻿@model ListaCompras.ViewModel.PessoaFisicaViewModel
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Criar Pessoa Física";
+    ViewBag.Title = "Criar Pessoa Física";
 }
 
 <h2>Criar Pessoa Física:</h2>
@@ -63,6 +63,17 @@
             <input type="submit" value="Criar" class="btn btn-default" />
         </div>
     </div>
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
 }
 
 

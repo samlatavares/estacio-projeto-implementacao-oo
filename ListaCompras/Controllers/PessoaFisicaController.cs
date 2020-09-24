@@ -28,6 +28,7 @@ namespace ListaCompras.Controllers
             }
             else
             {
+                ViewBag.Message = "Por favor, preencha os dados.";
                 return CriaPessoaFisica();
             }
         }

@@ -37,11 +37,28 @@ namespace ListaCompras.Controllers
         public ActionResult CriarPedido(PedidoViewModel pedido)
         {
             PedidoCriarCommand pedidoCommand = new PedidoCriarCommand();
-            pedidoCommand.Executar(pedido);
 
-            int idUsuario = (int)Session["Usuario"];
-            ViewBag.Id_Usuario = new SelectList(db.Usuario, "Id_Usuario", "Email", idUsuario);
-            return View("PedidoView");
+            if (pedidoCommand.Validar(pedido))
+            {
+
+                pedidoCommand.Executar(pedido);
+
+                if (Session["Usuario"] != null)
+                {
+                    int idUsuario = (int)Session["Usuario"];
+                    ViewBag.Id_Usuario = new SelectList(db.Usuario, "Id_Usuario", "Email", idUsuario);
+                }
+                else
+                {
+                    ViewBag.Message = "Por favor, acesse o sistema novamente.";
+                }
+            }
+            else
+            {
+                ViewBag.Message = "Por favor, preencha a descrição do pedido.";
+            }
+
+            return CriarPedido();
         }
 
         // GET: testePedidoViewModels

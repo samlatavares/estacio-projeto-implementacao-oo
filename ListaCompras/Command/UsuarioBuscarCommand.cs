@@ -49,7 +49,14 @@ namespace ListaCompras.Command
         {
             Usuario user = db.Usuario.First(u => u.Email == email);
 
-            return user.Id_Usuario;
+            if (user != null)
+            {
+                return user.Id_Usuario;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

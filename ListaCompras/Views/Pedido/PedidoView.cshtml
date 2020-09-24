@@ -25,8 +25,19 @@
         </tr>
         <tr>
             <td>
-                <input id="btnSalvar" type="submit" value="Salvar" class="btn btn-default"/>
+                <input id="btnSalvar" type="submit" value="Salvar" class="btn btn-default" />
             </td>
         </tr>
     </table>
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
 }

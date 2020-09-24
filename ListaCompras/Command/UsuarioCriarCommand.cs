@@ -23,12 +23,17 @@ namespace ListaCompras.Command
 
         public override bool Validar(UsuarioViewModel usuario)
         {
-            var usuarioCadastrado = db.Usuario.Any(a => a.Email == usuario.Email && a.Senha == usuario.Senha);
+            if (usuario.Email != null && usuario.Email != string.Empty && usuario.Senha != null && usuario.Senha != string.Empty)
+            {
+                var usuarioCadastrado = db.Usuario.Any(a => a.Email == usuario.Email && a.Senha == usuario.Senha);
 
-            if (usuarioCadastrado)
+                if (usuarioCadastrado)
                     return true;
                 else
-                    return false;           
+                    return false;
+            }
+
+            return false;
         }
     }
 }

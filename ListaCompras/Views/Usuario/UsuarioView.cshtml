@@ -15,16 +15,26 @@
         <tr>
             <td>
                 Senha: @Html.PasswordFor(m => m.Senha, new { @class = "form-control", placeholder = "Password" })
-                       @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
             </td>
         </tr>
         <tr>
             <td>
                 <input id="btnAcessar" type="submit" value="Acessar" class="btn btn-default" />
-                @Html.ActionLink("Criar Pessoa Física", "CriaPessoaFisica", "PessoaFisica") | 
+                @Html.ActionLink("Criar Pessoa Física", "CriaPessoaFisica", "PessoaFisica") |
                 @Html.ActionLink("Criar Pessoa Jurídica", "CriaPessoaJuridica", "PessoaJuridica")
             </td>
         </tr>
     </table>
 }
 
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}
